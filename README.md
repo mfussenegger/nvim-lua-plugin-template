@@ -74,15 +74,37 @@ luarocks test spec/path_to_file.lua --local
 busted spec/path_to_file.lua
 ```
 
-If you see an error like `module 'busted.runner' not found`:
+### Common Errors
+
+#### "module "busted.runner" not found" or "pl.path requires LuaFileSystem" Error
+
+If you see one of the errors like the above fix it by
+runing the following command the following command:
 
 ```bash
 eval $(luarocks path --no-bin)
 ```
 
-For this to work you need to have Lua 5.1 set as your default version for
-luarocks. If that's not the case you can pass `--lua-version 5.1` to all the
-luarocks commands above.
+#### "sh: nlua: command not found" Error
+
+If the error above occurs do[^1]:
+
+##### Linux/Max
+
+Run the following command:
+```bash
+export PATH=$PATH:~/.luarocks/bin
+```
+
+##### Windows
+
+See the following guide to a variable to the PATH: [add to PATH][add-env-vars-windows].
+
+> [!Note]
+> For local testing to work you need to have Lua 5.1 set as your default version for
+> luarocks. If that's not the case you can pass `--lua-version 5.1` to all the
+> luarocks commands above, or set lua version 5.1 globally by running
+> `luarocks config --scope system lua_version 5.1`.
 
 [rockspec-format]: https://github.com/luarocks/luarocks/wiki/Rockspec-format
 [luarocks]: https://luarocks.org
@@ -91,3 +113,4 @@ luarocks commands above.
 [busted]: https://lunarmodules.github.io/busted/
 [nlua]: https://github.com/mfussenegger/nlua
 [use-this-template]: https://github.com/new?template_name=nvim-lua-plugin-template&template_owner=nvim-lua
+[add-env-vars-windows]: https://answers.microsoft.com/en-us/windows/forum/all/adding-path-variable/97300613-20cb-4d85-8d0e-cc9d3549ba23
