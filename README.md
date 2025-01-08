@@ -76,27 +76,24 @@ busted spec/path_to_file.lua
 
 ### Common Errors
 
-#### "module "busted.runner" not found" or "pl.path requires LuaFileSystem" Error
-
-If you see one of the errors like the above fix it by
+If you encounter the `module 'busted.runner' not found`
+or `pl.path requires LuaFileSystem` errors, fix it by
 runing the following command the following command:
 
 ```bash
 eval $(luarocks path --no-bin)
 ```
 
-#### "sh: nlua: command not found" Error
+If you encounter `sh: nlua: command not found` error the error above occurs do[^1]:
 
-If the error above occurs do[^1]:
-
-##### Linux/Max
+#### Linux/Max
 
 Run the following command:
 ```bash
 export PATH=$PATH:~/.luarocks/bin
 ```
 
-##### Windows
+#### Windows
 
 See the following guide to a variable to the PATH: [add to PATH][add-env-vars-windows].
 
